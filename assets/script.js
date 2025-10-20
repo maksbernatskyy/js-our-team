@@ -48,10 +48,10 @@ for (let i = 0; i < teamMembers.length; i++) {
   // Blocco di codice dell'HTML
   const markup = `
                       <div class="col">
-                        <div class="card mb-3" style="max-width: 540px;">
+                        <div class="card mb-3 bg-black text-white" style="max-width: 540px;">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img src="${thisMember.img}" class="img-fluid rounded-start" alt="...">
+                                    <img src="${thisMember.img}" class="img-fluid rounded-start h-100 w-100" alt="...">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
@@ -64,7 +64,7 @@ for (let i = 0; i < teamMembers.length; i++) {
                         </div>
                       </div>
                 `
-                
+
   // Inserisco il blocco nell'HTML
   teamMembersField.innerHTML += markup
 }
