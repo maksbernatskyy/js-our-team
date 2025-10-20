@@ -57,11 +57,15 @@ for (let i = 0; i < teamMembers.length; i++) {
                                     <div class="card-body">
                                         <h5 class="card-title">${thisMember.name}</h5>
                                         <p class="card-text">${thisMember.role}</p>
-                                        <a href="#">${email}</a>
+                                        <a href="#">${thisMember.email}</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                       </div>
-                `;
+                `
+                
+  // Inserisco il blocco nell'HTML
+  teamMembersField.innerHTML += markup
 }
+
