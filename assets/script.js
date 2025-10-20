@@ -39,6 +39,9 @@ const teamMembers = [
 
 console.log(teamMembers);
 
+// =========================================================================================
+// =========================================================================================
+
 // Selezione il contenitore nell'HTML
 const teamMembersField = document.getElementById("team-members");
 
@@ -63,9 +66,45 @@ for (let i = 0; i < teamMembers.length; i++) {
                             </div>
                         </div>
                       </div>
-                `
+                `;
 
   // Inserisco il blocco nell'HTML
-  teamMembersField.innerHTML += markup
+  teamMembersField.innerHTML += markup;
 }
 
+// ============================================================================================
+// ============================================================================================
+
+/* Inserimento nuova card */
+
+// Inizializzazione input
+const form = document.getElementById("form");
+const fullnameField = document.getElementById("fullname");
+const roleField = document.getElementById("role");
+const mailField = document.getElementById("mail");
+const imageField = document.getElementById("image");
+
+// Form
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const updateMarkup = `
+                      <div class="col">
+                        <div class="card mb-3 bg-black text-white" style="max-width: 540px;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="${imageField.value}" class="img-fluid rounded-start h-100 w-100" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${fullnameField.value}</h5>
+                                        <p class="card-text">${roleField.value}</p>
+                                        <a href="#">${mailField.value}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                `;
+  teamMembersField.innerHTML += updateMarkup;  
+});
