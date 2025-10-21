@@ -39,28 +39,23 @@ const teamMembers = [
 
 console.log(teamMembers);
 
-// =========================================================================================
-// =========================================================================================
+// ========================================================================================
+// ========================================================================================
 
-// Selezione il contenitore nell'HTML
-const teamMembersField = document.getElementById("team-members");
-
-// Ciclo per inserimento dati nel blocco
-for (let i = 0; i < teamMembers.length; i++) {
-  const thisMember = teamMembers[i];
-  // Blocco di codice dell'HTML
+/* Inizializzazione funzioni */
+function getMarkup(name, role, email, img) {
   const markup = `
                       <div class="col">
                         <div class="card mb-3 bg-black text-white" style="max-width: 540px;">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img src="${thisMember.img}" class="img-fluid rounded-start h-100 w-100" alt="...">
+                                    <img src="${img}" class="img-fluid rounded-start h-100 w-100" alt="...">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title">${thisMember.name}</h5>
-                                        <p class="card-text">${thisMember.role}</p>
-                                        <a href="#">${thisMember.email}</a>
+                                        <h5 class="card-title">${name}</h5>
+                                        <p class="card-text">${role}</p>
+                                        <a href="#">${email}</a>
                                     </div>
                                 </div>
                             </div>
@@ -70,6 +65,19 @@ for (let i = 0; i < teamMembers.length; i++) {
 
   // Inserisco il blocco nell'HTML
   teamMembersField.innerHTML += markup;
+}
+
+// =========================================================================================
+// =========================================================================================
+
+// Selezione il contenitore nell'HTML
+const teamMembersField = document.getElementById("team-members");
+
+// Ciclo per inserimento dati nel blocco
+for (let i = 0; i < teamMembers.length; i++) {
+  const thisMember = teamMembers[i];
+
+  getMarkup(thisMember.name, thisMember.role, thisMember.email, thisMember.img)
 }
 
 // ============================================================================================
@@ -88,23 +96,5 @@ const imageField = document.getElementById("image");
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const updateMarkup = `
-                      <div class="col">
-                        <div class="card mb-3 bg-black text-white" style="max-width: 540px;">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img src="${imageField.value}" class="img-fluid rounded-start h-100 w-100" alt="...">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">${fullnameField.value}</h5>
-                                        <p class="card-text">${roleField.value}</p>
-                                        <a href="#">${mailField.value}</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                      </div>
-                `;
-  teamMembersField.innerHTML += updateMarkup;  
+  getMarkup(fullnameField.value, roleField.value, mailField.value, imageField.value)
 });
